@@ -13,7 +13,7 @@ dt=2*10^-3;
 %% background velocity
 v0=ones(nx,ny,nz)*1000;
 %% create normal distributed W
-rng(2)
+rng(1)
 W=randn(nx,ny,nz);
 
 % sampling interval
@@ -25,13 +25,13 @@ nkx=nx*2;
 nky=ny*2;
 nkz=nz*2;
 
-kx=ksx*(0:floor(nkx/2)-1)/nkx;
-ky=ksy*(0:floor(nky/2)-1)/nky;
-kz=ksz*(0:floor(nkz/2)-1)/nkz;
+kx=ksx*(0:round(nkx/2))/nkx;
+ky=ksy*(0:round(nky/2))/nky;
+kz=ksz*(0:round(nkz/2))/nkz;
 
 
 FW=fftn(W,[nkx,nky,nkz]);
-FW=FW(1:floor(nkx/2),1:floor(nky/2),1:floor(nkz/2))*2;
+FW=FW(1:nk
 %% spectral filter
 FF=R2(kx,ky,kz);
 Fv=FF.*FW;
